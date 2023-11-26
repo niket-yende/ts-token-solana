@@ -18,28 +18,28 @@ const metadata = {
 
 const mint = generateSigner(umi);
 
-// async function createMetadataDetails() {
-//     await createV1(umi, {
-//         mint,
-//         authority: umi.identity,
-//         name: metadata.name,
-//         symbol: metadata.symbol,
-//         uri: metadata.uri,
-//         sellerFeeBasisPoints: percentAmount(0),
-//         decimals: 9,
-//         tokenStandard: TokenStandard.Fungible,
-//     }).sendAndConfirm(umi)
-// }
+async function createMetadataDetails() {
+    await createV1(umi, {
+        mint,
+        authority: umi.identity,
+        name: metadata.name,
+        symbol: metadata.symbol,
+        uri: metadata.uri,
+        sellerFeeBasisPoints: percentAmount(0),
+        decimals: 9,
+        tokenStandard: TokenStandard.Fungible,
+    }).sendAndConfirm(umi)
+}
 
-// async function mintToken() {
-//     await mintV1(umi, {
-//         mint: mint.publicKey,
-//         authority: umi.identity,
-//         amount: 10_000,
-//         tokenOwner: umi.identity.publicKey,
-//         tokenStandard: TokenStandard.Fungible,
-//     }).sendAndConfirm(umi)
-// }
+async function mintToken() {
+    await mintV1(umi, {
+        mint: mint.publicKey,
+        authority: umi.identity,
+        amount: 10_000,
+        tokenOwner: umi.identity.publicKey,
+        tokenStandard: TokenStandard.Fungible,
+    }).sendAndConfirm(umi)
+}
 
 async function createFungibleOneLiner() {
     createFungible(umi, {
@@ -58,10 +58,10 @@ createFungibleOneLiner()
     .catch(err => console.error("error minting the tokens", err))
 
 
-// createMetadataDetails().
-//     then(() => console.log('successfully crated our metadata accounts'))
-//     .catch(err => console.error("error minting the tokens", err))
+createMetadataDetails().
+    then(() => console.log('successfully crated our metadata accounts'))
+    .catch(err => console.error("error minting the tokens", err))
 
-// mintToken()
-//     .then(() => console.log("Successfully minted our Gold Token"))
-//     .catch(err => console.error("error minting the tokens", err))
+mintToken()
+    .then(() => console.log("Successfully minted our Gold Token"))
+    .catch(err => console.error("error minting the tokens", err))
